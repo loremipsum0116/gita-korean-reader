@@ -1,15 +1,17 @@
-# 바가바드 기타 한글 리더
+# 바가바드 기타 한글 전자책
 
-바가바드 기타 원문, 한글 번역, 영어 번역, 해설, 절별 낭송을 함께 읽을 수 있는 정적 웹 리더입니다.
-
-## 보기
-
-GitHub Pages 배포 후 루트 주소에서 바로 열립니다.
+사용자가 정리한 한글 Markdown 18개 장만으로 구성한 정적 전자책 뷰어입니다.
 
 ## 구성
 
-- `index.html`: 기본 진입 페이지
-- `book.html`: 리더 페이지
-- `data/korean_translation.json`: 한글 번역 데이터
-- `data/korean_chapter_notes.json`: 장별 한글 소개
-- `data/verse_recitation/`: 절별 낭송 mp3
+- `index.html`: 전자책 뷰어
+- `book.html`: 같은 뷰어의 별칭 페이지
+- `chapters/chapter-01.md` ~ `chapters/chapter-18.md`: 본문 원본 Markdown
+- `assets/focus-music.mp3`: 스피커 버튼으로 재생되는 배경 음악
+
+## 조작
+
+- 오른쪽 페이지 영역 클릭: 다음 페이지
+- 왼쪽 페이지 영역 클릭: 이전 페이지
+- 모바일 오른쪽에서 왼쪽으로 스와이프: 다음 페이지
+- 모바일 왼쪽에서 오른쪽으로 스와이프: 이전 페이지

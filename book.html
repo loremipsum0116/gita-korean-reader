@@ -1,65 +1,57 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>바가바드 기타 리더</title>
+    <title>바가바드 기타 한글 전자책</title>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <style>
       :root {
         color-scheme: light;
-        --bg: #e8efe7;
-        --bg-strong: #d7e4dc;
-        --surface: #f7faf5;
-        --paper: #fffdf6;
-        --paper-alt: #faf6ec;
-        --edge: #dfd4c2;
-        --ink: #292622;
-        --muted: #696b64;
-        --soft: #899488;
-        --accent: #8e3142;
-        --accent-2: #176b67;
-        --gold: #b98b2f;
-        --line: rgba(41, 38, 34, 0.13);
-        --shadow: rgba(38, 31, 24, 0.22);
-        --reader-font: 18px;
+        --bg: #e5ece5;
+        --panel: #f4f8f2;
+        --paper: #fffdf5;
+        --paper-edge: #ded2bd;
+        --paper-line: rgba(46, 42, 35, 0.11);
+        --ink: #27231f;
+        --muted: #6f7069;
+        --accent: #8f2f42;
+        --accent-2: #236e68;
+        --gold: #a7781f;
+        --shadow: rgba(38, 31, 24, 0.24);
+        --reader-font: 20px;
         --radius: 8px;
       }
 
       [data-theme="night"] {
         color-scheme: dark;
-        --bg: #182522;
-        --bg-strong: #223631;
-        --surface: #1f2d29;
-        --paper: #252522;
-        --paper-alt: #2b2a26;
-        --edge: #3f3a32;
-        --ink: #efe7da;
-        --muted: #b7aca0;
-        --soft: #8da59b;
-        --accent: #e18a96;
-        --accent-2: #79c4b6;
-        --gold: #dab56c;
-        --line: rgba(239, 231, 218, 0.14);
-        --shadow: rgba(0, 0, 0, 0.42);
+        --bg: #16211f;
+        --panel: #1d2a27;
+        --paper: #252520;
+        --paper-edge: #494236;
+        --paper-line: rgba(239, 229, 214, 0.12);
+        --ink: #f1e7d6;
+        --muted: #baaea0;
+        --accent: #df8996;
+        --accent-2: #77c7b8;
+        --gold: #d5ae5e;
+        --shadow: rgba(0, 0, 0, 0.44);
       }
 
       * {
         box-sizing: border-box;
       }
 
-      html {
+      html,
+      body {
         min-height: 100%;
       }
 
       body {
-        min-height: 100vh;
         margin: 0;
-        background:
-          radial-gradient(circle at top left, rgba(23, 107, 103, 0.12), transparent 34rem),
-          linear-gradient(135deg, var(--bg), var(--bg-strong));
+        background: var(--bg);
         color: var(--ink);
-        font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+        font-family: ui-serif, Georgia, "Apple SD Gothic Neo", "Noto Serif KR", "Nanum Myeongjo", serif;
         letter-spacing: 0;
       }
 
@@ -75,96 +67,53 @@
 
       button:disabled {
         cursor: not-allowed;
-        opacity: 0.45;
+        opacity: 0.38;
       }
 
       .app {
         display: grid;
-        grid-template-columns: minmax(260px, 320px) 1fr;
+        grid-template-rows: auto 1fr auto;
         min-height: 100vh;
       }
 
-      .library {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        border-right: 1px solid var(--line);
-        background: color-mix(in srgb, var(--surface) 82%, transparent);
-        padding: 22px;
+      .topbar {
+        display: grid;
+        grid-template-columns: minmax(180px, 1fr) minmax(220px, 360px) auto;
+        align-items: center;
+        gap: 14px;
+        border-bottom: 1px solid var(--paper-line);
+        background: color-mix(in srgb, var(--panel) 88%, transparent);
+        padding: 14px 18px;
       }
 
       .brand {
-        display: grid;
-        gap: 14px;
+        min-width: 0;
       }
 
-      .cover {
-        overflow: hidden;
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: var(--paper);
-        box-shadow: 0 16px 40px var(--shadow);
-      }
-
-      .cover img {
-        display: block;
-        width: 100%;
-        aspect-ratio: 16 / 10;
-        object-fit: cover;
-      }
-
-      .title-block {
-        display: grid;
-        gap: 4px;
-      }
-
-      .kicker {
+      .brand h1 {
         margin: 0;
-        color: var(--accent-2);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
+        overflow: hidden;
+        color: var(--ink);
+        font-size: 1.18rem;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
-
-      h1 {
-        margin-bottom: 0;
-        font-size: 1.75rem;
-        line-height: 1.1;
-      }
-
-      .subtitle {
-        margin-bottom: 0;
+      .brand p {
+        margin: 4px 0 0;
+        overflow: hidden;
         color: var(--muted);
         font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.9rem;
-        line-height: 1.45;
+        font-size: 0.82rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
-      .field {
-        display: grid;
-        gap: 7px;
-      }
-
-      .field label {
-        color: var(--muted);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.78rem;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
-
-      .select,
-      .search {
+      .chapter-select {
         width: 100%;
-        border: 1px solid var(--line);
+        min-width: 0;
+        border: 1px solid var(--paper-line);
         border-radius: var(--radius);
         background: var(--paper);
         color: var(--ink);
@@ -172,112 +121,10 @@
         outline: none;
       }
 
-      .select:focus,
-      .search:focus,
-      .icon-btn:focus-visible,
-      .verse-pill:focus-visible,
-      .chapter-btn:focus-visible {
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-2) 25%, transparent);
-        outline: none;
-      }
-
-      .contents {
-        display: grid;
-        gap: 8px;
-        overflow: auto;
-        padding-right: 4px;
-      }
-
-      .chapter-btn {
-        display: grid;
-        grid-template-columns: 2rem 1fr;
-        gap: 10px;
-        width: 100%;
-        min-height: 48px;
-        border: 1px solid transparent;
-        border-radius: var(--radius);
-        background: transparent;
-        color: var(--ink);
-        padding: 8px;
-        text-align: left;
-      }
-
-      .chapter-btn:hover,
-      .chapter-btn.active {
-        border-color: var(--line);
-        background: color-mix(in srgb, var(--paper) 82%, transparent);
-      }
-
-      .chapter-number {
-        display: grid;
-        place-items: center;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        background: color-mix(in srgb, var(--accent-2) 15%, transparent);
-        color: var(--accent-2);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.78rem;
-        font-weight: 800;
-      }
-
-      .chapter-name {
-        display: block;
-        font-size: 0.95rem;
-        font-weight: 700;
-        line-height: 1.25;
-      }
-
-      .chapter-meaning {
-        display: block;
-        margin-top: 2px;
-        color: var(--muted);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.78rem;
-        line-height: 1.35;
-      }
-
-      .reader {
-        display: grid;
-        grid-template-rows: auto 1fr;
-        min-width: 0;
-        padding: 22px;
-      }
-
-      .toolbar {
-        display: grid;
-        grid-template-columns: auto 1fr auto;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 18px;
-      }
-
-      .toolbar-group {
+      .controls {
         display: flex;
         align-items: center;
         gap: 8px;
-        min-width: 0;
-      }
-
-      .toolbar-title {
-        min-width: 0;
-        text-align: center;
-      }
-
-      .toolbar-title h2 {
-        margin-bottom: 4px;
-        overflow: hidden;
-        font-size: 1.35rem;
-        line-height: 1.2;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .toolbar-title p {
-        margin-bottom: 0;
-        color: var(--muted);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.85rem;
       }
 
       .icon-btn {
@@ -285,15 +132,15 @@
         place-items: center;
         width: 42px;
         height: 42px;
-        border: 1px solid var(--line);
+        border: 1px solid var(--paper-line);
         border-radius: var(--radius);
-        background: color-mix(in srgb, var(--paper) 90%, transparent);
+        background: color-mix(in srgb, var(--paper) 92%, transparent);
         color: var(--ink);
-        transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+        transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
       }
 
       .icon-btn:hover:not(:disabled) {
-        border-color: color-mix(in srgb, var(--accent-2) 35%, var(--line));
+        border-color: color-mix(in srgb, var(--accent-2) 40%, var(--paper-line));
         background: var(--paper);
         transform: translateY(-1px);
       }
@@ -308,1114 +155,824 @@
         align-items: center;
         gap: 8px;
         height: 42px;
-        border: 1px solid var(--line);
+        min-width: 154px;
+        border: 1px solid var(--paper-line);
         border-radius: var(--radius);
-        background: color-mix(in srgb, var(--paper) 88%, transparent);
+        background: color-mix(in srgb, var(--paper) 92%, transparent);
         padding: 0 10px;
       }
 
       .font-control input {
-        width: 96px;
+        width: 94px;
         accent-color: var(--accent-2);
       }
 
-      .book-stage {
+      .stage {
         display: grid;
-        align-items: stretch;
+        place-items: center;
         min-height: 0;
+        padding: 22px 18px 14px;
       }
 
-      .book {
+      .book-shell {
         position: relative;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        width: min(1180px, 100%);
-        min-height: calc(100vh - 136px);
-        margin: 0 auto;
-        overflow: hidden;
-        border: 1px solid var(--edge);
-        border-radius: var(--radius);
-        background: var(--paper);
-        box-shadow: 0 24px 60px var(--shadow);
+        width: min(820px, 100%);
+        height: min(72vh, 780px);
+        min-height: 520px;
+        perspective: 1600px;
       }
 
-      .book::before {
+      .book-shell::before {
         content: "";
         position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        z-index: 2;
-        width: 34px;
-        pointer-events: none;
-        transform: translateX(-50%);
-        background:
-          linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.09), transparent),
-          linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0));
+        inset: 18px -10px -16px;
+        border-radius: var(--radius);
+        background: rgba(58, 46, 35, 0.18);
+        filter: blur(14px);
       }
 
-      .page {
+      .book-page {
         position: relative;
         display: flex;
         flex-direction: column;
         min-width: 0;
-        max-height: calc(100vh - 136px);
-        overflow: auto;
+        min-height: 0;
+        overflow: hidden;
+        border: 1px solid var(--paper-edge);
+        border-radius: var(--radius);
         background:
-          linear-gradient(var(--line) 1px, transparent 1px) 0 4.35rem / 100% 2.05rem,
+          linear-gradient(var(--paper-line) 1px, transparent 1px) 0 5.1rem / 100% 2.18rem,
           var(--paper);
-        padding: 44px 50px 36px;
-        font-size: var(--reader-font);
-        line-height: 1.72;
+        box-shadow: 0 28px 70px var(--shadow);
+        transform-origin: center;
       }
 
-      .page.left {
-        border-right: 1px solid var(--edge);
+      .book-page.enter-next {
+        animation: pageInNext 260ms ease both;
       }
 
-      .page.right {
-        background:
-          linear-gradient(var(--line) 1px, transparent 1px) 0 4.35rem / 100% 2.05rem,
-          var(--paper-alt);
+      .book-page.enter-prev {
+        animation: pageInPrev 260ms ease both;
       }
 
-      .page-head {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 22px;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 12px;
+      @keyframes pageInNext {
+        from {
+          opacity: 0.35;
+          transform: translateX(34px) rotateY(-7deg);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) rotateY(0);
+        }
       }
 
-      .page-head h3 {
-        margin-bottom: 0;
-        color: var(--accent);
-        font-size: 1.1rem;
-        line-height: 1.25;
+      @keyframes pageInPrev {
+        from {
+          opacity: 0.35;
+          transform: translateX(-34px) rotateY(7deg);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) rotateY(0);
+        }
       }
 
-      .folio {
-        flex: 0 0 auto;
-        color: var(--muted);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.78rem;
-        font-weight: 700;
+      .turn-zone {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 4;
+        width: 50%;
+        border: 0;
+        background: transparent;
       }
 
-      .chapter-summary {
-        color: color-mix(in srgb, var(--ink) 82%, var(--muted));
-        font-size: 0.96em;
+      .turn-zone.left {
+        left: 0;
       }
 
-      .chapter-summary h4 {
-        margin: 1.1em 0 0.45em;
-        color: var(--accent-2);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.9em;
+      .turn-zone.right {
+        right: 0;
       }
 
-      .chapter-summary ul {
-        margin: 0 0 1em;
-        padding-left: 1.2em;
-      }
-
-      .chapter-summary li {
-        margin-bottom: 0.45em;
-      }
-
-      .divider {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin: 26px 0 18px;
-        color: var(--gold);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.74rem;
-        font-weight: 800;
-        text-transform: uppercase;
-      }
-
-      .divider::before,
-      .divider::after {
-        content: "";
+      .page-content {
         flex: 1;
-        height: 1px;
-        background: var(--line);
-      }
-
-      .sanskrit {
-        margin: 0 0 22px;
-        color: var(--ink);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 1.28em;
-        font-weight: 700;
-        line-height: 1.85;
-        white-space: pre-wrap;
-      }
-
-      .transliteration {
-        margin: 0;
-        color: var(--accent-2);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.9em;
-        font-style: italic;
-        line-height: 1.75;
-        white-space: pre-wrap;
-      }
-
-      .word-meanings {
-        margin: 22px 0 0;
-        color: var(--muted);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.82em;
-        line-height: 1.65;
-      }
-
-      .korean-translation,
-      .translation,
-      .commentary {
-        font-size: 1em;
-      }
-
-      .korean-translation {
-        border-bottom: 1px solid var(--line);
-        margin-bottom: 22px;
-        padding-bottom: 18px;
-      }
-
-      .korean-translation p {
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        min-height: 0;
+        overflow: hidden;
+        padding: 54px 66px 42px;
+        font-size: var(--reader-font);
         line-height: 1.78;
       }
 
-      .korean-translation .speaker {
-        color: var(--accent-2);
-        font-size: 0.86em;
-        font-weight: 800;
+      .page-content h1,
+      .page-content h2,
+      .page-content h3,
+      .page-content p,
+      .page-content hr {
+        margin-top: 0;
       }
 
-      .section-title {
-        margin: 0 0 14px;
+      .page-content h1 {
+        margin-bottom: 28px;
         color: var(--accent);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0;
-        text-transform: uppercase;
+        font-size: 1.45em;
+        line-height: 1.28;
       }
 
-      .korean-translation .section-title {
+      .page-content h2 {
+        margin-bottom: 18px;
         color: var(--accent-2);
+        font-size: 1.02em;
+        line-height: 1.35;
       }
 
-      .korean-translation p,
-      .translation p,
-      .commentary p,
-      .chapter-summary p {
-        margin-bottom: 1em;
+      .page-content p {
+        margin-bottom: 1.05em;
+        word-break: keep-all;
       }
 
-      .meta-row {
+      .page-content strong {
+        color: color-mix(in srgb, var(--ink) 90%, var(--accent));
+        font-weight: 800;
+      }
+
+      .page-content .speaker {
+        color: var(--accent-2);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 0.88em;
+        font-weight: 800;
+      }
+
+      .page-content .bullet {
+        position: relative;
+        padding-left: 1.1em;
+      }
+
+      .page-content .bullet::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.78em;
+        width: 0.35em;
+        height: 0.35em;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+
+      .page-content hr {
+        height: 1px;
+        margin: 28px 0;
+        border: 0;
+        background: var(--paper-line);
+      }
+
+      .page-footer {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-bottom: 22px;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 16px;
+        border-top: 1px solid var(--paper-line);
+        background: color-mix(in srgb, var(--paper) 82%, transparent);
+        padding: 12px 66px;
       }
 
-      .meta-row .select {
-        min-width: 0;
+      .page-footer span {
+        color: var(--muted);
         font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         font-size: 0.82rem;
       }
 
-      .verse-strip {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-top: 18px;
-        padding-top: 18px;
-        border-top: 1px solid var(--line);
+      .page-footer .page-number {
+        color: var(--accent);
+        font-weight: 800;
       }
 
-      .verse-pill {
-        display: grid;
-        place-items: center;
-        min-width: 2.1rem;
-        height: 2.1rem;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: color-mix(in srgb, var(--paper) 76%, transparent);
-        color: var(--muted);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.78rem;
-        font-weight: 700;
+      .page-footer .hint-right {
+        justify-self: end;
       }
 
-      .verse-pill.active {
-        border-color: transparent;
-        background: var(--accent);
-        color: white;
+      .progress-wrap {
+        width: min(820px, 100%);
+        margin: 16px auto 0;
       }
 
-      .empty {
-        color: var(--muted);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 0.92rem;
-      }
-
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
+      .progress {
+        width: 100%;
+        height: 7px;
         overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--paper-line) 72%, transparent);
+      }
+
+      .progress-bar {
+        width: 0;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--accent-2), var(--gold));
+        transition: width 180ms ease;
       }
 
       .loading {
         display: grid;
         place-items: center;
-        min-height: 100vh;
-        padding: 24px;
+        min-height: 260px;
         color: var(--muted);
         font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
-      @media (max-width: 1120px) {
-        .app {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .library {
-          order: 2;
-          border-right: 0;
-          border-bottom: 1px solid var(--line);
-        }
-
-        .reader {
-          order: 1;
-        }
-
-        .cover {
-          display: none;
-        }
-
-        .contents {
-          grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-          max-height: 220px;
-        }
-
-        .reader {
-          padding: 18px;
-        }
-
-        .book {
-          min-height: auto;
-        }
-
-        .page {
-          max-height: none;
-        }
+      .measuring-page {
+        position: fixed;
+        left: -9999px;
+        top: 0;
+        z-index: -1;
+        visibility: hidden;
       }
 
-      @media (max-width: 760px) {
-        .toolbar {
+      @media (max-width: 820px) {
+        .topbar {
           grid-template-columns: 1fr;
+          gap: 10px;
         }
 
-        .toolbar-title {
-          order: -1;
-          text-align: left;
-        }
-
-        .toolbar-title h2 {
+        .brand p {
           white-space: normal;
         }
 
-        .toolbar-group {
+        .controls {
           justify-content: space-between;
         }
 
         .font-control {
           flex: 1;
+          min-width: 0;
         }
 
         .font-control input {
           width: 100%;
         }
 
-        .book {
-          grid-template-columns: 1fr;
+        .stage {
+          padding: 14px 10px 12px;
         }
 
-        .book::before {
+        .book-shell {
+          height: calc(100vh - 246px);
+          min-height: 430px;
+        }
+
+        .page-content {
+          padding: 34px 26px 28px;
+          line-height: 1.74;
+        }
+
+        .page-content h1 {
+          font-size: 1.28em;
+        }
+
+        .page-footer {
+          grid-template-columns: 1fr;
+          gap: 5px;
+          padding: 10px 26px;
+          text-align: center;
+        }
+
+        .page-footer .hint-left,
+        .page-footer .hint-right {
           display: none;
         }
+      }
 
-        .page {
-          padding: 30px 24px;
+      @media (max-width: 420px) {
+        .book-shell {
+          height: calc(100vh - 236px);
+          min-height: 390px;
         }
 
-        .page.left {
-          border-right: 0;
-          border-bottom: 1px solid var(--edge);
+        .page-content {
+          padding: 28px 22px 24px;
         }
-
       }
     </style>
   </head>
-  <body>
-    <main class="app" id="app">
-      <aside class="library" aria-label="목차">
-        <section class="brand" aria-label="책">
-          <figure class="cover">
-            <img
-              alt="전장의 크리슈나와 아르주나"
-              src="https://user-images.githubusercontent.com/62856848/194565916-2f0d5a4e-a038-4dcf-ba8d-1fd4f789a4a0.png"
-            >
-          </figure>
-          <div class="title-block">
-            <p class="kicker">읽기</p>
-            <h1>바가바드 기타</h1>
-            <p class="subtitle">원문과 한글 번역, 영어 번역, 해설과 낭송을 차분히 함께 읽는 공간입니다.</p>
-          </div>
-        </section>
+  <body data-theme="day">
+    <main class="app">
+      <header class="topbar">
+        <div class="brand">
+          <h1>바가바드 기타</h1>
+          <p id="chapterLabel">한글 전자책을 준비하고 있습니다.</p>
+        </div>
 
-        <label class="field">
-          <span>장 선택</span>
-          <select class="select" id="chapterSelect"></select>
-        </label>
+        <select class="chapter-select" id="chapterSelect" aria-label="장 선택"></select>
 
-        <label class="field">
-          <span>장 찾기</span>
-          <input class="search" id="chapterSearch" type="search" placeholder="장 이름">
-        </label>
+        <div class="controls">
+          <button class="icon-btn" id="musicButton" type="button" title="음악 재생" aria-label="음악 재생">
+            <i data-lucide="volume-2"></i>
+          </button>
+          <label class="font-control" title="글자 크기">
+            <i data-lucide="type"></i>
+            <input id="fontSize" type="range" min="17" max="25" value="20" aria-label="글자 크기">
+          </label>
+          <button class="icon-btn" id="themeButton" type="button" title="야간 모드" aria-label="야간 모드">
+            <i data-lucide="moon"></i>
+          </button>
+        </div>
+      </header>
 
-        <nav class="contents" id="chapterList" aria-label="장 목록"></nav>
-      </aside>
-
-      <section class="reader" aria-live="polite">
-        <header class="toolbar">
-          <div class="toolbar-group">
-            <button class="icon-btn" id="prevChapter" type="button" title="이전 장" aria-label="이전 장">
-              <i data-lucide="chevrons-left"></i>
-            </button>
-            <button class="icon-btn" id="prevVerse" type="button" title="이전 절" aria-label="이전 절">
-              <i data-lucide="chevron-left"></i>
-            </button>
-            <button class="icon-btn" id="playVerse" type="button" title="낭송 듣기" aria-label="낭송 듣기">
-              <i data-lucide="volume-2"></i>
-            </button>
-          </div>
-
-          <div class="toolbar-title">
-            <h2 id="currentTitle">불러오는 중</h2>
-            <p id="currentMeta">잠시만 기다려 주세요</p>
-          </div>
-
-          <div class="toolbar-group">
-            <label class="font-control" title="글자 크기">
-              <i data-lucide="type"></i>
-              <input id="fontSize" type="range" min="16" max="24" value="18" aria-label="글자 크기">
-            </label>
-            <button class="icon-btn" id="themeToggle" type="button" title="야간 모드" aria-label="야간 모드">
-              <i data-lucide="moon"></i>
-            </button>
-            <button class="icon-btn" id="nextVerse" type="button" title="다음 절" aria-label="다음 절">
-              <i data-lucide="chevron-right"></i>
-            </button>
-            <button class="icon-btn" id="nextChapter" type="button" title="다음 장" aria-label="다음 장">
-              <i data-lucide="chevrons-right"></i>
-            </button>
-          </div>
-        </header>
-
-        <div class="book-stage">
-          <article class="book">
-            <section class="page left" aria-label="원문 페이지">
-              <div class="page-head">
-                <h3 id="leftHeading">장 소개</h3>
-                <span class="folio" id="leftFolio">1</span>
-              </div>
-              <div class="chapter-summary" id="chapterSummary"></div>
-              <div class="divider">원문</div>
-              <pre class="sanskrit" id="verseText"></pre>
-              <pre class="transliteration" id="transliteration"></pre>
-              <p class="word-meanings" id="wordMeanings"></p>
-              <div class="verse-strip" id="verseStrip" aria-label="절 목록"></div>
-            </section>
-
-            <section class="page right" aria-label="번역 페이지">
-              <div class="page-head">
-                <h3 id="rightHeading">번역</h3>
-                <span class="folio" id="rightFolio">2</span>
-              </div>
-              <section class="korean-translation" aria-label="한글 번역">
-                <h4 class="section-title">한글 번역</h4>
-                <div id="koreanText"></div>
-              </section>
-              <div class="meta-row">
-                <label class="field">
-                  <span>영어 번역</span>
-                  <select class="select" id="translationAuthor"></select>
-                </label>
-                <label class="field">
-                  <span>해설</span>
-                  <select class="select" id="commentaryAuthor"></select>
-                </label>
-              </div>
-              <div class="translation" id="translationText"></div>
-              <div class="divider">해설</div>
-              <div class="commentary" id="commentaryText"></div>
-            </section>
+      <section class="stage" aria-live="polite">
+        <div class="book-shell" id="bookShell">
+          <article class="book-page" id="bookPage">
+            <div class="page-content" id="pageContent">
+              <div class="loading">책장을 펼치고 있습니다.</div>
+            </div>
+            <footer class="page-footer">
+              <span class="hint-left">왼쪽을 누르면 이전 페이지</span>
+              <span class="page-number" id="pageNumber">0 / 0</span>
+              <span class="hint-right">오른쪽을 누르면 다음 페이지</span>
+            </footer>
           </article>
+          <button class="turn-zone left" id="prevZone" type="button" aria-label="이전 페이지"></button>
+          <button class="turn-zone right" id="nextZone" type="button" aria-label="다음 페이지"></button>
+        </div>
+
+        <div class="progress-wrap" aria-hidden="true">
+          <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
         </div>
       </section>
     </main>
-    <audio id="audio"></audio>
+
+    <audio id="music" src="assets/focus-music.mp3" preload="metadata" loop></audio>
 
     <script>
-      const state = {
-        chapter: 1,
-        verse: 1,
-        translationAuthor: "Swami Sivananda",
-        commentaryAuthor: "Swami Sivananda",
-        fontSize: 18,
-        theme: "day"
-      };
+      const chapterFiles = Array.from({ length: 18 }, (_, index) => {
+        const number = String(index + 1).padStart(2, "0");
+        return `chapters/chapter-${number}.md`;
+      });
 
-      const data = {
-        chapters: [],
-        verses: [],
-        translations: [],
-        commentary: [],
-        koreanTranslations: [],
-        koreanChapterNotes: [],
-        versesByChapter: new Map(),
-        translationsByVerse: new Map(),
-        commentaryByVerse: new Map(),
-        koreanByVerse: new Map(),
-        koreanNotesByChapter: new Map()
+      const state = {
+        page: 0,
+        fontSize: Number(localStorage.getItem("ebook-font-size")) || 20,
+        theme: localStorage.getItem("ebook-theme") || "day",
+        isMusicPlaying: false
       };
 
       const elements = {};
-      const storageKey = "gita-reader-state";
-      let isInitialRender = true;
+      let blocks = [];
+      let pages = [];
+      let pageChapters = [];
+      let chapters = [];
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let pointerStartX = 0;
+      let pointerStartY = 0;
+      let suppressClickUntil = 0;
+      let resizeTimer = null;
 
       document.addEventListener("DOMContentLoaded", init);
 
       async function init() {
-        if ("scrollRestoration" in history) {
-          history.scrollRestoration = "manual";
-        }
         cacheElements();
-        restoreState();
-        applyUrlState();
-        document.documentElement.style.setProperty("--reader-font", state.fontSize + "px");
-        document.body.dataset.theme = state.theme;
-
-        await loadData();
-        buildIndexes();
-        normalizeState();
-        populateControls();
+        applyPreferences();
         bindEvents();
-        updateThemeButton();
-        render();
         refreshIcons();
+        await loadBook();
+        paginateAndRender();
       }
 
       function cacheElements() {
         [
+          "chapterLabel",
           "chapterSelect",
-          "chapterSearch",
-          "chapterList",
-          "prevChapter",
-          "prevVerse",
-          "nextVerse",
-          "nextChapter",
-          "playVerse",
-          "themeToggle",
+          "musicButton",
           "fontSize",
-          "currentTitle",
-          "currentMeta",
-          "leftHeading",
-          "leftFolio",
-          "rightHeading",
-          "rightFolio",
-          "chapterSummary",
-          "verseText",
-          "transliteration",
-          "wordMeanings",
-          "verseStrip",
-          "koreanText",
-          "translationAuthor",
-          "commentaryAuthor",
-          "translationText",
-          "commentaryText",
-          "audio"
+          "themeButton",
+          "bookShell",
+          "bookPage",
+          "pageContent",
+          "pageNumber",
+          "progressBar",
+          "prevZone",
+          "nextZone",
+          "music"
         ].forEach((id) => {
           elements[id] = document.getElementById(id);
         });
       }
 
-      async function loadData() {
-        const [chapters, verses, translations, commentary, koreanTranslations, koreanChapterNotes] = await Promise.all([
-          fetchJson("data/chapters.json"),
-          fetchJson("data/verse.json"),
-          fetchJson("data/translation.json"),
-          fetchJson("data/commentary_english_sivananda.json"),
-          fetchJson("data/korean_translation.json"),
-          fetchJson("data/korean_chapter_notes.json")
-        ]);
-
-        data.chapters = chapters.sort((a, b) => a.chapter_number - b.chapter_number);
-        data.verses = verses.sort((a, b) => a.verse_order - b.verse_order);
-        data.translations = translations;
-        data.commentary = commentary;
-        data.koreanTranslations = koreanTranslations;
-        data.koreanChapterNotes = koreanChapterNotes;
-      }
-
-      async function fetchJson(path) {
-        const response = await fetch(path);
-        if (!response.ok) {
-          throw new Error("Could not load " + path);
-        }
-        return response.json();
-      }
-
-      function buildIndexes() {
-        data.versesByChapter = groupBy(data.verses, "chapter_number");
-        data.translationsByVerse = groupBy(data.translations, "verse_id");
-        data.commentaryByVerse = groupBy(data.commentary, "verse_id");
-        data.koreanByVerse = groupBy(data.koreanTranslations, "verse_id");
-        data.koreanNotesByChapter = groupBy(data.koreanChapterNotes, "chapter_number");
-      }
-
-      function groupBy(list, key) {
-        const map = new Map();
-        list.forEach((item) => {
-          const value = item[key];
-          if (!map.has(value)) {
-            map.set(value, []);
-          }
-          map.get(value).push(item);
-        });
-        return map;
-      }
-
-      function populateControls() {
-        elements.chapterSelect.replaceChildren(
-          ...data.chapters.map((chapter) => option(
-            chapter.chapter_number,
-            pad(chapter.chapter_number) + " " + getKoreanChapterTitle(chapter)
-          ))
-        );
-
-        const translationAuthors = uniqueBy(data.translations, "authorName")
-          .sort((a, b) => a.authorName.localeCompare(b.authorName))
-          .map((entry) => option(entry.authorName, entry.authorName + " - " + entry.lang));
-
-        const commentaryAuthors = [
-          option("None", "해설 숨기기"),
-          ...uniqueBy(data.commentary, "authorName")
-            .sort((a, b) => a.authorName.localeCompare(b.authorName))
-            .map((entry) => option(entry.authorName, entry.authorName + " - " + entry.lang))
-        ];
-
-        elements.translationAuthor.replaceChildren(...translationAuthors);
-        elements.commentaryAuthor.replaceChildren(...commentaryAuthors);
+      function applyPreferences() {
+        document.body.dataset.theme = state.theme;
+        document.documentElement.style.setProperty("--reader-font", `${state.fontSize}px`);
         elements.fontSize.value = state.fontSize;
-      }
-
-      function option(value, label) {
-        const element = document.createElement("option");
-        element.value = value;
-        element.textContent = label;
-        return element;
-      }
-
-      function uniqueBy(list, key) {
-        const seen = new Set();
-        return list.filter((item) => {
-          if (seen.has(item[key])) {
-            return false;
-          }
-          seen.add(item[key]);
-          return true;
-        });
+        updateThemeButton();
       }
 
       function bindEvents() {
+        elements.prevZone.addEventListener("click", () => {
+          if (Date.now() > suppressClickUntil) {
+            previousPage();
+          }
+        });
+        elements.nextZone.addEventListener("click", () => {
+          if (Date.now() > suppressClickUntil) {
+            nextPage();
+          }
+        });
+        elements.musicButton.addEventListener("click", toggleMusic);
+        elements.themeButton.addEventListener("click", toggleTheme);
+        elements.fontSize.addEventListener("input", handleFontChange);
         elements.chapterSelect.addEventListener("change", () => {
-          setChapter(Number(elements.chapterSelect.value));
+          goToPage(firstPageForChapter(elements.chapterSelect.value), "next");
         });
 
-        elements.chapterSearch.addEventListener("input", renderChapterList);
-        elements.prevChapter.addEventListener("click", () => setChapter(state.chapter - 1));
-        elements.nextChapter.addEventListener("click", () => setChapter(state.chapter + 1));
-        elements.prevVerse.addEventListener("click", previousVerse);
-        elements.nextVerse.addEventListener("click", nextVerse);
-        elements.playVerse.addEventListener("click", toggleAudio);
-        elements.themeToggle.addEventListener("click", toggleTheme);
+        elements.bookShell.addEventListener("touchstart", (event) => {
+          const touch = event.changedTouches[0];
+          touchStartX = touch.clientX;
+          touchStartY = touch.clientY;
+        }, { passive: true });
 
-        elements.fontSize.addEventListener("input", () => {
-          state.fontSize = Number(elements.fontSize.value);
-          document.documentElement.style.setProperty("--reader-font", state.fontSize + "px");
-          saveState();
+        elements.bookShell.addEventListener("touchend", (event) => {
+          const touch = event.changedTouches[0];
+          const dx = touch.clientX - touchStartX;
+          const dy = touch.clientY - touchStartY;
+          handleSwipe(dx, dy);
+        }, { passive: true });
+
+        elements.bookShell.addEventListener("pointerdown", (event) => {
+          if (!event.isPrimary) {
+            return;
+          }
+          pointerStartX = event.clientX;
+          pointerStartY = event.clientY;
         });
 
-        elements.translationAuthor.addEventListener("change", () => {
-          state.translationAuthor = elements.translationAuthor.value;
-          saveState();
-          render();
+        elements.bookShell.addEventListener("pointerup", (event) => {
+          if (!event.isPrimary) {
+            return;
+          }
+          handleSwipe(event.clientX - pointerStartX, event.clientY - pointerStartY);
         });
-
-        elements.commentaryAuthor.addEventListener("change", () => {
-          state.commentaryAuthor = elements.commentaryAuthor.value;
-          saveState();
-          render();
-        });
-
-        elements.audio.addEventListener("ended", () => setPlaying(false));
 
         document.addEventListener("keydown", (event) => {
           if (event.target.matches("input, select, textarea")) {
             return;
           }
           if (event.key === "ArrowLeft") {
-            previousVerse();
+            previousPage();
           }
-          if (event.key === "ArrowRight") {
-            nextVerse();
+          if (event.key === "ArrowRight" || event.key === " ") {
+            nextPage();
           }
         });
-      }
 
-      function render() {
-        const chapter = getChapter();
-        const verses = getChapterVerses();
-        const verse = getVerse();
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            const ratio = pages.length ? state.page / pages.length : 0;
+            paginateAndRender(Math.floor(ratio * pages.length));
+          }, 180);
+        });
 
-        elements.chapterSelect.value = String(state.chapter);
-        elements.translationAuthor.value = state.translationAuthor;
-        elements.commentaryAuthor.value = state.commentaryAuthor;
+        elements.music.addEventListener("play", () => {
+          state.isMusicPlaying = true;
+          updateMusicButton();
+        });
 
-        elements.currentTitle.textContent = getKoreanChapterTitle(chapter);
-        elements.currentMeta.textContent = chapter.chapter_number + "장 " + state.verse + "절";
-        elements.leftHeading.textContent = "장을 열며";
-        elements.leftFolio.textContent = pad(chapter.chapter_number);
-        elements.rightHeading.textContent = chapter.chapter_number + "." + state.verse;
-        elements.rightFolio.textContent = pad(chapter.chapter_number) + "." + pad(state.verse);
-
-        renderKoreanChapterNote(chapter);
-        elements.verseText.textContent = cleanText(verse.text);
-        elements.transliteration.textContent = cleanText(verse.transliteration);
-        elements.wordMeanings.textContent = cleanText(verse.word_meanings);
-
-        renderKoreanTranslation(verse);
-        renderTranslation(verse);
-        renderCommentary(verse);
-        renderVerseStrip(verses);
-        renderChapterList();
-        updateButtons();
-        setAudioSource();
-        saveState();
-
-        if (isInitialRender) {
-          requestAnimationFrame(() => window.scrollTo(0, 0));
-          isInitialRender = false;
-        }
-      }
-
-      function renderTranslation(verse) {
-        const entries = data.translationsByVerse.get(verse.id) || [];
-        const selected = entries.find((entry) => entry.authorName === state.translationAuthor) || entries[0];
-
-        if (!selected) {
-          renderEmpty(elements.translationText, "영어 번역이 없습니다.");
-          return;
-        }
-
-        renderParagraphs(elements.translationText, selected.description);
-      }
-
-      function renderKoreanTranslation(verse) {
-        const entries = data.koreanByVerse.get(verse.id) || [];
-        const selected = entries[0];
-
-        if (!selected) {
-          renderEmpty(elements.koreanText, "한글 번역이 없습니다.");
-          return;
-        }
-
-        renderKoreanParagraphs(elements.koreanText, selected.description);
-      }
-
-      function renderCommentary(verse) {
-        if (state.commentaryAuthor === "None") {
-          renderEmpty(elements.commentaryText, "해설을 숨겼습니다.");
-          return;
-        }
-
-        const entries = data.commentaryByVerse.get(verse.id) || [];
-        const selected = entries.find((entry) => entry.authorName === state.commentaryAuthor)
-          || entries.find((entry) => entry.lang === "english")
-          || entries[0];
-
-        if (!selected) {
-          renderEmpty(elements.commentaryText, "해설이 없습니다.");
-          return;
-        }
-
-        renderParagraphs(elements.commentaryText, selected.description);
-      }
-
-      function renderParagraphs(container, text) {
-        container.replaceChildren();
-        const paragraphs = cleanText(text)
-          .split(/\n{2,}/)
-          .map((part) => part.trim())
-          .filter(Boolean);
-
-        if (!paragraphs.length) {
-          renderEmpty(container, "내용이 없습니다.");
-          return;
-        }
-
-        paragraphs.forEach((paragraph) => {
-          const element = document.createElement("p");
-          element.textContent = paragraph.replace(/\n/g, " ");
-          container.appendChild(element);
+        elements.music.addEventListener("pause", () => {
+          state.isMusicPlaying = false;
+          updateMusicButton();
         });
       }
 
-      function renderKoreanParagraphs(container, text) {
-        container.replaceChildren();
-        const paragraphs = cleanText(text)
-          .split(/\n{2,}/)
-          .map((part) => part.trim())
-          .filter(Boolean);
-
-        if (!paragraphs.length) {
-          renderEmpty(container, "한글 번역이 없습니다.");
-          return;
-        }
-
-        paragraphs.forEach((paragraph) => {
-          const element = document.createElement("p");
-          const speakerMatch = paragraph.match(/^\*\*(.+)\*\*$/);
-          if (speakerMatch) {
-            element.className = "speaker";
-            element.textContent = speakerMatch[1];
-          } else {
-            element.textContent = paragraph
-              .replace(/\*\*(.+?)\*\*/g, "$1")
-              .replace(/\n/g, " ");
+      async function loadBook() {
+        const texts = await Promise.all(chapterFiles.map(async (path) => {
+          const response = await fetch(path);
+          if (!response.ok) {
+            throw new Error(`${path} 파일을 불러오지 못했습니다.`);
           }
-          container.appendChild(element);
-        });
-      }
+          return response.text();
+        }));
 
-      function renderKoreanChapterNote(chapter) {
-        const note = getKoreanChapterNote(chapter);
-        if (!note) {
-          renderParagraphs(elements.chapterSummary, chapter.chapter_summary);
-          return;
-        }
+        blocks = texts.flatMap((text, index) => parseMarkdown(text, index + 1));
+        chapters = blocks
+          .filter((block) => block.type === "chapterTitle")
+          .map((block) => ({ id: block.chapter, title: block.text }));
 
-        elements.chapterSummary.replaceChildren();
-        cleanText(note)
-          .split(/\n{2,}/)
-          .map((part) => part.trim())
-          .filter(Boolean)
-          .forEach((block) => {
-            if (block.startsWith("# ")) {
-              return;
-            }
-
-            if (block.startsWith("## ")) {
-              const heading = document.createElement("h4");
-              heading.textContent = block.replace(/^##\s+/, "");
-              elements.chapterSummary.appendChild(heading);
-              return;
-            }
-
-            if (block.startsWith("* ")) {
-              const list = document.createElement("ul");
-              block.split("\n").forEach((line) => {
-                const itemText = line.replace(/^\*\s+/, "").replace(/\*\*(.+?)\*\*/g, "$1");
-                if (!itemText.trim()) {
-                  return;
-                }
-                const item = document.createElement("li");
-                item.textContent = itemText;
-                list.appendChild(item);
-              });
-              elements.chapterSummary.appendChild(list);
-              return;
-            }
-
-            const paragraph = document.createElement("p");
-            paragraph.textContent = block.replace(/\n/g, " ").replace(/\*\*(.+?)\*\*/g, "$1");
-            elements.chapterSummary.appendChild(paragraph);
-          });
-      }
-
-      function renderEmpty(container, message) {
-        container.replaceChildren();
-        const element = document.createElement("p");
-        element.className = "empty";
-        element.textContent = message;
-        container.appendChild(element);
-      }
-
-      function renderVerseStrip(verses) {
-        elements.verseStrip.replaceChildren(
-          ...verses.map((verse) => {
-            const button = document.createElement("button");
-            button.className = "verse-pill" + (verse.verse_number === state.verse ? " active" : "");
-            button.type = "button";
-            button.textContent = verse.verse_number;
-            button.title = verse.verse_number + "절";
-            button.setAttribute("aria-label", verse.verse_number + "절");
-            button.addEventListener("click", () => setVerse(verse.verse_number));
-            return button;
-          })
-        );
-      }
-
-      function renderChapterList() {
-        const query = elements.chapterSearch.value.trim().toLowerCase();
-        const chapters = data.chapters.filter((chapter) => {
-          const text = [
-            chapter.chapter_number,
-            getKoreanChapterTitle(chapter),
-            chapter.name_transliterated,
-            chapter.name_translation,
-            chapter.name_meaning
-          ].join(" ").toLowerCase();
-          return text.includes(query);
-        });
-
-        elements.chapterList.replaceChildren(
+        elements.chapterSelect.replaceChildren(
           ...chapters.map((chapter) => {
-            const button = document.createElement("button");
-            button.className = "chapter-btn" + (chapter.chapter_number === state.chapter ? " active" : "");
-            button.type = "button";
-            button.innerHTML = [
-              "<span class=\"chapter-number\">" + pad(chapter.chapter_number) + "</span>",
-              "<span><span class=\"chapter-name\"></span><span class=\"chapter-meaning\"></span></span>"
-            ].join("");
-            button.querySelector(".chapter-name").textContent = getKoreanChapterTitle(chapter);
-            button.querySelector(".chapter-meaning").textContent = "총 " + chapter.verses_count + "절";
-            button.addEventListener("click", () => setChapter(chapter.chapter_number));
-            return button;
+            const option = document.createElement("option");
+            option.value = String(chapter.id);
+            option.textContent = chapter.title;
+            return option;
           })
         );
       }
 
-      function updateButtons() {
-        elements.prevChapter.disabled = state.chapter <= 1;
-        elements.nextChapter.disabled = state.chapter >= data.chapters.length;
-        elements.prevVerse.disabled = state.chapter <= 1 && state.verse <= 1;
-        elements.nextVerse.disabled = state.chapter >= data.chapters.length && state.verse >= getChapterVerses().length;
+      function parseMarkdown(markdown, chapterNumber) {
+        const normalized = markdown.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+        const lines = normalized.split("\n");
+        const parsed = [];
+        let paragraph = [];
+
+        const flushParagraph = () => {
+          const text = paragraph.join(" ").trim();
+          if (text) {
+            parsed.push({ type: "p", chapter: chapterNumber, text });
+          }
+          paragraph = [];
+        };
+
+        lines.forEach((rawLine) => {
+          const line = rawLine.trim();
+          if (!line) {
+            flushParagraph();
+            return;
+          }
+          if (/^-{3,}$/.test(line)) {
+            flushParagraph();
+            parsed.push({ type: "hr", chapter: chapterNumber });
+            return;
+          }
+          if (line.startsWith("# ")) {
+            flushParagraph();
+            parsed.push({ type: "chapterTitle", chapter: chapterNumber, text: line.replace(/^#\s+/, "") });
+            return;
+          }
+          if (line.startsWith("## ")) {
+            flushParagraph();
+            parsed.push({ type: "h2", chapter: chapterNumber, text: line.replace(/^##\s+/, "") });
+            return;
+          }
+          if (line.startsWith("* ")) {
+            flushParagraph();
+            parsed.push({ type: "bullet", chapter: chapterNumber, text: line.replace(/^\*\s+/, "") });
+            return;
+          }
+          paragraph.push(line);
+        });
+
+        flushParagraph();
+        return parsed;
       }
 
-      function setChapter(chapterNumber) {
-        const chapter = data.chapters.find((entry) => entry.chapter_number === chapterNumber);
-        if (!chapter) {
+      function paginateAndRender(preferredPage = state.page) {
+        const previousChapter = pageChapters[state.page]?.id;
+        pages = paginateBlocks(blocks);
+        pageChapters = pages.map((_, pageIndex) => chapterForPage(pageIndex));
+
+        if (previousChapter && preferredPage === state.page) {
+          preferredPage = Math.max(0, firstPageForChapter(previousChapter));
+        }
+        state.page = clamp(preferredPage, 0, Math.max(0, pages.length - 1));
+        renderPage();
+      }
+
+      function paginateBlocks(sourceBlocks) {
+        const visibleRect = elements.pageContent.getBoundingClientRect();
+        const measurer = document.createElement("div");
+        measurer.className = "measuring-page";
+        measurer.style.width = `${visibleRect.width}px`;
+        measurer.style.height = `${visibleRect.height}px`;
+
+        const content = document.createElement("div");
+        content.className = "page-content";
+        content.style.width = "100%";
+        content.style.height = "100%";
+        measurer.appendChild(content);
+        document.body.appendChild(measurer);
+
+        const result = [];
+        let current = [];
+
+        sourceBlocks.forEach((block) => {
+          if (block.type === "hr" && !current.length) {
+            return;
+          }
+
+          if (fits(content, [...current, block])) {
+            current.push(block);
+            return;
+          }
+
+          if (current.length) {
+            result.push(current);
+            current = [];
+          }
+
+          if (fits(content, [block])) {
+            current.push(block);
+            return;
+          }
+
+          if (block.type === "p") {
+            const splitPages = splitParagraph(content, block);
+            result.push(...splitPages.slice(0, -1));
+            current = splitPages.at(-1) || [];
+            return;
+          }
+
+          result.push([block]);
+        });
+
+        if (current.length) {
+          result.push(current);
+        }
+
+        measurer.remove();
+        return result.length ? result : [[]];
+      }
+
+      function fits(content, pageBlocks) {
+        renderBlocks(content, pageBlocks);
+        return content.scrollHeight <= content.clientHeight + 2;
+      }
+
+      function splitParagraph(content, block) {
+        const units = block.text.split(/(\s+)/).filter(Boolean);
+        const splitPages = [];
+        let chunk = "";
+
+        units.forEach((unit) => {
+          const next = chunk + unit;
+          if (fits(content, [{ ...block, text: next.trim() }])) {
+            chunk = next;
+            return;
+          }
+
+          if (chunk.trim()) {
+            splitPages.push([{ ...block, text: chunk.trim() }]);
+            chunk = unit.trimStart();
+          } else {
+            splitPages.push([{ ...block, text: unit.trim() }]);
+            chunk = "";
+          }
+        });
+
+        if (chunk.trim()) {
+          splitPages.push([{ ...block, text: chunk.trim() }]);
+        }
+
+        return splitPages;
+      }
+
+      function renderPage(direction = "next") {
+        const pageBlocks = pages[state.page] || [];
+        renderBlocks(elements.pageContent, pageBlocks);
+
+        const currentChapter = pageChapters[state.page] || chapters[0];
+        elements.chapterLabel.textContent = currentChapter?.title || "";
+        elements.chapterSelect.value = String(currentChapter?.id || 1);
+        elements.pageNumber.textContent = `${state.page + 1} / ${pages.length}`;
+        elements.progressBar.style.width = `${((state.page + 1) / pages.length) * 100}%`;
+        elements.prevZone.disabled = state.page <= 0;
+        elements.nextZone.disabled = state.page >= pages.length - 1;
+
+        elements.bookPage.classList.remove("enter-next", "enter-prev");
+        void elements.bookPage.offsetWidth;
+        elements.bookPage.classList.add(direction === "prev" ? "enter-prev" : "enter-next");
+      }
+
+      function renderBlocks(container, pageBlocks) {
+        container.replaceChildren(...pageBlocks.map(createElementForBlock));
+      }
+
+      function createElementForBlock(block) {
+        if (block.type === "chapterTitle") {
+          const heading = document.createElement("h1");
+          heading.textContent = block.text;
+          return heading;
+        }
+
+        if (block.type === "h2") {
+          const heading = document.createElement("h2");
+          heading.textContent = block.text;
+          return heading;
+        }
+
+        if (block.type === "hr") {
+          return document.createElement("hr");
+        }
+
+        const paragraph = document.createElement("p");
+        if (block.type === "bullet") {
+          paragraph.className = "bullet";
+        }
+
+        const speaker = block.text.match(/^\*\*(.+)\*\*$/);
+        if (speaker) {
+          paragraph.className = "speaker";
+          paragraph.textContent = speaker[1];
+          return paragraph;
+        }
+
+        paragraph.innerHTML = inlineMarkdown(block.text);
+        return paragraph;
+      }
+
+      function inlineMarkdown(text) {
+        return escapeHtml(text).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      }
+
+      function escapeHtml(text) {
+        const element = document.createElement("div");
+        element.textContent = text;
+        return element.innerHTML;
+      }
+
+      function chapterForPage(pageIndex) {
+        let chapter = chapters[0];
+        for (let index = 0; index <= pageIndex; index += 1) {
+          const titleBlock = pages[index]?.find((block) => block.type === "chapterTitle");
+          if (titleBlock) {
+            chapter = { id: titleBlock.chapter, title: titleBlock.text };
+          }
+        }
+        return chapter;
+      }
+
+      function firstPageForChapter(chapterId) {
+        const target = Number(chapterId);
+        const index = pages.findIndex((page) => page.some((block) => block.type === "chapterTitle" && block.chapter === target));
+        return index >= 0 ? index : 0;
+      }
+
+      function previousPage() {
+        goToPage(state.page - 1, "prev");
+      }
+
+      function nextPage() {
+        goToPage(state.page + 1, "next");
+      }
+
+      function handleSwipe(dx, dy) {
+        if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) {
           return;
         }
-        state.chapter = chapterNumber;
-        state.verse = 1;
-        pauseAudio();
-        render();
+        suppressClickUntil = Date.now() + 500;
+        if (dx > 0) {
+          previousPage();
+        } else {
+          nextPage();
+        }
       }
 
-      function setVerse(verseNumber) {
-        const verses = getChapterVerses();
-        const verse = verses.find((entry) => entry.verse_number === verseNumber);
-        if (!verse) {
+      function goToPage(pageIndex, direction) {
+        const next = clamp(pageIndex, 0, pages.length - 1);
+        if (next === state.page) {
           return;
         }
-        state.verse = verseNumber;
-        pauseAudio();
-        render();
-        document.querySelector(".book").scrollIntoView({ block: "start", behavior: "smooth" });
+        state.page = next;
+        renderPage(direction);
       }
 
-      function previousVerse() {
-        if (state.verse > 1) {
-          setVerse(state.verse - 1);
-          return;
-        }
-
-        if (state.chapter > 1) {
-          state.chapter -= 1;
-          state.verse = getChapterVerses().length;
-          pauseAudio();
-          render();
+      async function toggleMusic() {
+        if (elements.music.paused) {
+          try {
+            await elements.music.play();
+          } catch (error) {
+            state.isMusicPlaying = false;
+            updateMusicButton();
+          }
+        } else {
+          elements.music.pause();
         }
       }
 
-      function nextVerse() {
-        const verses = getChapterVerses();
-        if (state.verse < verses.length) {
-          setVerse(state.verse + 1);
-          return;
-        }
-
-        if (state.chapter < data.chapters.length) {
-          state.chapter += 1;
-          state.verse = 1;
-          pauseAudio();
-          render();
-        }
-      }
-
-      function toggleTheme() {
-        state.theme = state.theme === "night" ? "day" : "night";
-        document.body.dataset.theme = state.theme;
-        updateThemeButton();
-        saveState();
-      }
-
-      function updateThemeButton() {
-        elements.themeToggle.title = state.theme === "night" ? "밝은 모드" : "야간 모드";
-        elements.themeToggle.setAttribute("aria-label", elements.themeToggle.title);
-        elements.themeToggle.innerHTML = state.theme === "night"
-          ? "<i data-lucide=\"sun\"></i>"
-          : "<i data-lucide=\"moon\"></i>";
-        refreshIcons();
-      }
-
-      function setAudioSource() {
-        const source = "data/verse_recitation/" + state.chapter + "/" + state.verse + ".mp3";
-        if (!elements.audio.src.endsWith(source)) {
-          elements.audio.src = source;
-        }
-        setPlaying(false);
-      }
-
-      async function toggleAudio() {
-        if (!elements.audio.paused) {
-          pauseAudio();
-          return;
-        }
-
-        try {
-          await elements.audio.play();
-          setPlaying(true);
-        } catch (error) {
-          setPlaying(false);
-        }
-      }
-
-      function pauseAudio() {
-        elements.audio.pause();
-        setPlaying(false);
-      }
-
-      function setPlaying(isPlaying) {
-        elements.playVerse.title = isPlaying ? "낭송 멈추기" : "낭송 듣기";
-        elements.playVerse.setAttribute("aria-label", elements.playVerse.title);
-        elements.playVerse.innerHTML = isPlaying
+      function updateMusicButton() {
+        elements.musicButton.title = state.isMusicPlaying ? "음악 멈추기" : "음악 재생";
+        elements.musicButton.setAttribute("aria-label", elements.musicButton.title);
+        elements.musicButton.innerHTML = state.isMusicPlaying
           ? "<i data-lucide=\"pause\"></i>"
           : "<i data-lucide=\"volume-2\"></i>";
         refreshIcons();
       }
 
-      function getChapter() {
-        return data.chapters.find((chapter) => chapter.chapter_number === state.chapter) || data.chapters[0];
+      function toggleTheme() {
+        state.theme = state.theme === "night" ? "day" : "night";
+        localStorage.setItem("ebook-theme", state.theme);
+        document.body.dataset.theme = state.theme;
+        updateThemeButton();
       }
 
-      function getChapterVerses() {
-        return data.versesByChapter.get(state.chapter) || [];
+      function updateThemeButton() {
+        elements.themeButton.title = state.theme === "night" ? "밝은 모드" : "야간 모드";
+        elements.themeButton.setAttribute("aria-label", elements.themeButton.title);
+        elements.themeButton.innerHTML = state.theme === "night"
+          ? "<i data-lucide=\"sun\"></i>"
+          : "<i data-lucide=\"moon\"></i>";
+        refreshIcons();
       }
 
-      function getVerse() {
-        return getChapterVerses().find((verse) => verse.verse_number === state.verse) || getChapterVerses()[0];
+      function handleFontChange() {
+        state.fontSize = Number(elements.fontSize.value);
+        localStorage.setItem("ebook-font-size", String(state.fontSize));
+        document.documentElement.style.setProperty("--reader-font", `${state.fontSize}px`);
+        paginateAndRender(state.page);
       }
 
-      function getKoreanChapterTitle(chapter) {
-        const note = data.koreanNotesByChapter.get(chapter.chapter_number)?.[0];
-        return note?.title || chapter.name_transliterated;
-      }
-
-      function getKoreanChapterNote(chapter) {
-        return data.koreanNotesByChapter.get(chapter.chapter_number)?.[0]?.note || "";
-      }
-
-      function normalizeState() {
-        const chapter = data.chapters.find((entry) => entry.chapter_number === Number(state.chapter));
-        state.chapter = chapter ? Number(state.chapter) : 1;
-
-        const verses = getChapterVerses();
-        const verse = verses.find((entry) => entry.verse_number === Number(state.verse));
-        state.verse = verse ? Number(state.verse) : 1;
-
-        if (!Number.isFinite(Number(state.fontSize))) {
-          state.fontSize = 18;
-        }
-        state.fontSize = Math.min(24, Math.max(16, Number(state.fontSize)));
-
-        const translationAuthors = new Set(data.translations.map((entry) => entry.authorName));
-        if (!translationAuthors.has(state.translationAuthor)) {
-          state.translationAuthor = "Swami Sivananda";
-        }
-
-        const commentaryAuthors = new Set(data.commentary.map((entry) => entry.authorName));
-        if (state.commentaryAuthor !== "None" && !commentaryAuthors.has(state.commentaryAuthor)) {
-          state.commentaryAuthor = "Swami Sivananda";
-        }
-
-        if (state.theme !== "night") {
-          state.theme = "day";
-        }
-      }
-
-      function cleanText(text) {
-        return String(text || "")
-          .replace(/\u00a0/g, " ")
-          .replace(/[ \t]+\n/g, "\n")
-          .trim();
-      }
-
-      function pad(number) {
-        return String(number).padStart(2, "0");
-      }
-
-      function saveState() {
-        localStorage.setItem(storageKey, JSON.stringify(state));
-      }
-
-      function restoreState() {
-        try {
-          const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
-          Object.assign(state, saved);
-        } catch (error) {
-          localStorage.removeItem(storageKey);
-        }
-      }
-
-      function applyUrlState() {
-        const params = new URLSearchParams(window.location.search);
-        const chapter = Number(params.get("chapter"));
-        const verse = Number(params.get("verse"));
-        const theme = params.get("theme");
-        if (chapter) {
-          state.chapter = chapter;
-        }
-        if (verse) {
-          state.verse = verse;
-        }
-        if (theme === "day" || theme === "night") {
-          state.theme = theme;
-        }
+      function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
       }
 
       function refreshIcons() {
