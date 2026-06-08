@@ -1,0 +1,167 @@
+[
+  {
+    "chapter": 1,
+    "verse": 24,
+    "endChapter": 1,
+    "endVerse": 25,
+    "src": "assets/illustrations/ch01_1-24_1-25.webp",
+    "alt": "두 군대 사이의 전차",
+    "caption": "두 군대 사이의 전차",
+    "width": 1122,
+    "height": 1402
+  },
+  {
+    "chapter": 1,
+    "verse": 47,
+    "endChapter": 1,
+    "endVerse": 47,
+    "src": "assets/illustrations/ch01_1-47.webp",
+    "alt": "활과 화살을 내던진 아르주나",
+    "caption": "활과 화살을 내던진 아르주나",
+    "width": 1122,
+    "height": 1402
+  },
+  {
+    "chapter": 2,
+    "verse": 22,
+    "endChapter": 2,
+    "endVerse": 24,
+    "src": "assets/illustrations/ch02_2-22_2-24.webp",
+    "alt": "낡은 몸을 벗고 새 몸으로",
+    "caption": "낡은 몸을 벗고 새 몸으로",
+    "width": 1122,
+    "height": 1402
+  },
+  {
+    "chapter": 3,
+    "verse": 37,
+    "endChapter": 3,
+    "endVerse": 39,
+    "src": "assets/illustrations/ch03_3-37_3-39.webp",
+    "alt": "욕망과 분노가 지혜를 가림",
+    "caption": "욕망과 분노가 지혜를 가림",
+    "width": 1122,
+    "height": 1402
+  },
+  {
+    "chapter": 4,
+    "verse": 7,
+    "endChapter": 4,
+    "endVerse": 8,
+    "src": "assets/illustrations/ch04_4-7_4-8.webp",
+    "alt": "정의가 쇠할때 나타나는 크리슈나",
+    "caption": "정의가 쇠할때 나타나는 크리슈나",
+    "width": 1122,
+    "height": 1402
+  },
+  {
+    "chapter": 6,
+    "verse": 11,
+    "endChapter": 6,
+    "endVerse": 19,
+    "src": "assets/illustrations/ch06_6-11_6-19.webp",
+    "alt": "흔들리지 않는 등불과 명상",
+    "caption": "흔들리지 않는 등불과 명상",
+    "width": 1122,
+    "height": 1402
+  },
+  {
+    "chapter": 7,
+    "verse": 4,
+    "endChapter": 7,
+    "endVerse": 8,
+    "src": "assets/illustrations/ch07_7-4_7-8.webp",
+    "alt": "실에 꿰인 보석처럼 크리슈나에게 꿰어진 세계",
+    "caption": "실에 꿰인 보석처럼 크리슈나에게 꿰어진 세계",
+    "width": 1145,
+    "height": 1374
+  },
+  {
+    "chapter": 9,
+    "verse": 26,
+    "endChapter": 9,
+    "endVerse": 29,
+    "src": "assets/illustrations/ch09_9-26_9-29.webp",
+    "alt": "잎 꽃 열매 물의 헌신",
+    "caption": "잎 꽃 열매 물의 헌신",
+    "width": 1145,
+    "height": 1374
+  },
+  {
+    "chapter": 10,
+    "verse": 20,
+    "endChapter": 10,
+    "endVerse": 42,
+    "src": "assets/illustrations/ch10_10-20_10-42.webp",
+    "alt": "세계 곳곳의 신적 현현",
+    "caption": "세계 곳곳의 신적 현현",
+    "width": 1145,
+    "height": 1374
+  },
+  {
+    "chapter": 11,
+    "verse": 10,
+    "endChapter": 11,
+    "endVerse": 20,
+    "src": "assets/illustrations/ch11_11-10_11-20.webp",
+    "alt": "천 개의 태양처럼 빛나는 우주적 형상",
+    "caption": "천 개의 태양처럼 빛나는 우주적 형상",
+    "width": 1145,
+    "height": 1374
+  },
+  {
+    "chapter": 11,
+    "verse": 26,
+    "endChapter": 11,
+    "endVerse": 32,
+    "src": "assets/illustrations/ch11_11-26_11-32.webp",
+    "alt": "시간으로서 모든 전사를 삼키는 형상",
+    "caption": "시간으로서 모든 전사를 삼키는 형상",
+    "width": 1145,
+    "height": 1374
+  },
+  {
+    "chapter": 12,
+    "verse": 6,
+    "endChapter": 12,
+    "endVerse": 20,
+    "src": "assets/illustrations/ch12_12-6_12-20.webp",
+    "alt": "윤회의 바다에서 건져내는 헌신의 길",
+    "caption": "윤회의 바다에서 건져내는 헌신의 길",
+    "width": 1145,
+    "height": 1374
+  },
+  {
+    "chapter": 15,
+    "verse": 1,
+    "endChapter": 15,
+    "endVerse": 4,
+    "src": "assets/illustrations/ch15_15-1_15-4.webp",
+    "alt": "거꾸로 선 보리수와 집착 없음의 도끼",
+    "caption": "거꾸로 선 보리수와 집착 없음의 도끼",
+    "width": 1145,
+    "height": 1374
+  },
+  {
+    "chapter": 16,
+    "verse": 1,
+    "endChapter": 16,
+    "endVerse": 21,
+    "src": "assets/illustrations/ch16_16-1_16-5_16-21.webp",
+    "alt": "신적 성품과 악마적 성품 세 지옥문",
+    "caption": "신적 성품과 악마적 성품 세 지옥문",
+    "width": 1145,
+    "height": 1374
+  },
+  {
+    "chapter": 18,
+    "verse": 65,
+    "endChapter": 18,
+    "endVerse": 73,
+    "src": "assets/illustrations/ch18_18-65_18-66_18-73.webp",
+    "alt": "최후의 피난처와 아르주나의 각성",
+    "caption": "최후의 피난처와 아르주나의 각성",
+    "width": 1145,
+    "height": 1374
+  }
+]
